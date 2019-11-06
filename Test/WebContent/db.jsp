@@ -11,8 +11,8 @@
 <%
     String driverName="com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/drink?serverTimezone=UTC&useSSL=false";
-    String id = "root";
-    String pwd ="1234";
+    String DBid = "root";
+    String DBpw ="1234";
    
     try{
         //[1] JDBC 드라이버 로드
@@ -22,14 +22,14 @@
         e.printStackTrace();
         return;
     }
-    out.println("mysql jdbc Driver registered!!");
-   
+    
     //[2]데이타베이스 연결 
-    Connection conn = DriverManager.getConnection(url,id,pwd);
-    out.println("DB연결성공!!");
-     
+    Statement stmt = null;
+    ResultSet rs = null;
+    Connection conn = DriverManager.getConnection(url,DBid,DBpw);
+    
     //[3]데이타베이스 연결 해제
-    conn.close();
+    
 %>
 </body>
 </html>
