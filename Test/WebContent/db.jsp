@@ -12,11 +12,11 @@
     String driverName="com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/drink?serverTimezone=UTC&useSSL=false";
     String DBid = "root";
-    String DBpw ="1234";
+    String DBpw = "1234";
    
     try{
         //[1] JDBC 드라이버 로드
-        Class.forName(driverName);     
+        Class.forName(driverName);
     }catch(ClassNotFoundException e){
         out.println("Where is your mysql jdbc driver?");
         e.printStackTrace();
@@ -29,7 +29,6 @@
     Connection conn = DriverManager.getConnection(url,DBid,DBpw);
     
     //[3]데이타베이스 연결 해제
-    
 %>
 </body>
 </html>

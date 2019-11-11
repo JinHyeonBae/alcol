@@ -6,7 +6,14 @@
 </head>
 <body>
 <form action="main.jsp" method = "get">
-	검색 : <input type ="text" size =20 name ="FindContentId">
+	검색 : <input type ="text" size=20 name ="FindContentId">
+	
+	<select name="kind">
+		<option value="1" selected>맥주</option>
+		<option value="2">소주</option>
+		<option value="3">막걸리</option>
+	</select>
+	
 	<input type="submit" value="Find"><br>
 </form>
 </body>
