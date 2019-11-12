@@ -1,17 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form action="main.jsp" method = "get">
+<form action="search.jsp" method = "get">
 	검색 : <input type ="text" size=20 name ="FindContentId">
 	
-	<select name="kind">
-		<option value="1" selected>맥주</option>
-		<option value="2">소주</option>
-		<option value="3">막걸리</option>
+	<select name="FindkindId">
+		<option value="%" selected>ALL</option>
+		<option value="맥주">맥주</option>
+		<option value="소주">소주</option>
+		<option value="막걸리">막걸리</option>
 	</select>
 	
 	<input type="submit" value="Find"><br>
