@@ -13,7 +13,7 @@
 	String SignInPw= request.getParameter("SignInPw");
 	String query = "select * from userinfo WHERE id =? and pw=?"; //db에서 unique key를 설정하는 게?  
 			
-	PreparedStatement pstmt =null;
+	PreparedStatement pstmt = null;
 	pstmt = conn.prepareStatement(query);
 	pstmt.setString(1,SignInId);
 	pstmt.setString(2,SignInPw);
