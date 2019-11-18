@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
-<%@ include file="./db.jsp"%>
+<%@ page import="DataBase.DataBase"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
     
 <!DOCTYPE html>
 <html>
@@ -23,6 +26,10 @@
 		background-color: #dddddd;
 	}
 </style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Lee
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
@@ -46,6 +53,7 @@
 </form>
 
 <%
+<<<<<<< HEAD
 String query;
 //이전 페이지의 url 값 받아오기
 String PreUrl = request.getHeader("referer");
@@ -82,6 +90,16 @@ else{
 %>
 
 
+=======
+	String FindId = request.getParameter("FindContentId");
+	String FindKindId = request.getParameter("FindkindId");
+	
+	DataBase asd = new DataBase();
+	
+	StringBuffer sb = asd.GetFindContent(FindId, FindKindId);
+	
+%> 
+>>>>>>> Lee
 	<table>
 			<tr>
 			<td>이미지</td>		
@@ -97,6 +115,7 @@ else{
 			<td></td>
 			
 		</tr>
+<<<<<<< HEAD
 	<%while(rs.next()) { %>
 		<tr>
 			<td><Image src="<%= rs.getString("url") %>" width = "150" height="150"></td>
@@ -112,6 +131,9 @@ else{
 			<td><%= rs.getString("love") %></td>
 			
 		</tr>
+=======
+		<%=sb%>
+>>>>>>> Lee
 	</table>
 <%} 
 	   if(rs.next()==false)
