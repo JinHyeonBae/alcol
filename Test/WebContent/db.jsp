@@ -9,26 +9,14 @@
 </head>
 <body>
 <%
-    String driverName="com.mysql.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/drink?serverTimezone=UTC&useSSL=false";
-    String DBid = "root";
-    String DBpw ="1234";
-   
-    try{
-        //[1] JDBC 드라이버 로드
-        Class.forName(driverName);     
-    }catch(ClassNotFoundException e){
-        out.println("Where is your mysql jdbc driver?");
-        e.printStackTrace();
-        return;
-    }
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+   String url = "jdbc:oracle:thin:@127.0.0.1:1521";
+   Connection conn = DriverManager.getConnection(url,"test","1234");
+   Statement stmt = conn.createStatement();
+   ResultSet rs;
     
-    //[2]데이타베이스 연결 
-    Statement stmt = null;
-   ResultSet rs = null;
-    Connection conn = DriverManager.getConnection(url,DBid,DBpw);
-    
-    //[3]데이타베이스 연결 해제
+ 
     
 %>
 </body>
