@@ -61,7 +61,7 @@
 		</td>	
 		<td><% 
 		int count =0;
-		String like = rs.getString("like");
+		String like = rs.getString("love");
 		count = Integer.parseInt(like);
 		%>
 		<img src ="../image_recipe/like.png"><br> <!-- 버튼으로 만들어야 함 -->
