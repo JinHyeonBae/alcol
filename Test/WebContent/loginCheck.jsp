@@ -9,25 +9,11 @@
 <body>
 
 <%
-	String sessionId ="";
-	String sessionPw ="";
-	String sessionValue = "";
-	Enumeration<?> enum_app = session.getAttributeNames(); //첫 번째 요소를 받아옴
-	
-	int i=0;
-	while(enum_app.hasMoreElements()){
-		i++;
-		sessionId = enum_app.nextElement().toString(); //키 
-		sessionValue = session.getAttribute(sessionId).toString(); //값
-		out.println(sessionId +" , " + sessionValue);
-	}
-	
-	if(sessionId ==null || sessionPw == null){
-		session.removeAttribute(sessionId);
-		session.removeAttribute(sessionPw);
-		out.println("일정시간이 지나 로그인이 종료되었습니다. 다시 로그인 해주세요.");		
-		//response.sendRedirect("./main.jsp");
-	}
+String masterID = (String)session.getAttribute("id");
+boolean isLogin = false;
+if (masterID != null) {
+  isLogin = true; 
+}
 %>
 
 
