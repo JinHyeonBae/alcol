@@ -9,6 +9,7 @@
 <body>
 
 <%
+<<<<<<< HEAD:Test/WebContent/login/loginCheck.jsp
 	String sessionId ="";
 	String sessionPw ="";
 	String sessionValue = "";
@@ -26,6 +27,13 @@
 		session.invalidate();
 		out.println("자동 로그아웃 되었습니다.");
 	}
+=======
+String masterID = (String)session.getAttribute("id");
+boolean isLogin = false;
+if (masterID != null) {
+  isLogin = true; 
+}
+>>>>>>> crow:Test/WebContent/loginCheck.jsp
 %>
 </body>
 </html>

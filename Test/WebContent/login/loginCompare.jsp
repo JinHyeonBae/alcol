@@ -26,6 +26,8 @@
     	session.setAttribute("id", SignInId);
 		session.setAttribute("pw", SignInPw);
 		out.println("로그인에 성공하셨습니다");
+		
+		
     }
     //이 코드는 당연히 create로 해야 되는 코드네.. prepared로 하면 아예 비교를 안 해도 되잖아
     
