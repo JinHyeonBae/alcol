@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
-<%@ include file="./db.jsp"%>
+<%@ page import="DataBase.DataBase"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
     
 <!DOCTYPE html>
 <html>
@@ -23,7 +26,8 @@
 		background-color: #dddddd;
 	}
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-KR">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -42,13 +46,13 @@
 </form>
 
 <%
-	String FindId= request.getParameter("FindContentId");
+	String FindId = request.getParameter("FindContentId");
 	String FindKindId = request.getParameter("FindkindId");
 	
-	String query = "select * from alcol WHERE name LIKE '%"+FindId+"%' and kind LIKE '"+FindKindId+"'";
+	DataBase asd = new DataBase();
 	
-	stmt = conn.createStatement();
-	rs = stmt.executeQuery(query); 
+	StringBuffer sb = asd.GetFindContent(FindId, FindKindId);
+	
 %> 
 	<table>
 		<tr>
@@ -56,13 +60,7 @@
 			<td>종류</td>
 			<td>도수</td>
 		</tr>
-	<%while(rs.next()) { %>
-		<tr>
-			<td><%= rs.getString("name") %></td>
-			<td><%= rs.getString("kind") %></td>
-			<td><%= rs.getFloat("alcohol") %></td>
-		</tr>
-	<% } %>
+		<%=sb%>
 	</table>
 </body>
 </html>

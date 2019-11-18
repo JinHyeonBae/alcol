@@ -9,8 +9,8 @@
 </head>
 <%	
 	int count =0;
-	String SignInId= request.getParameter("SignInId");
-	String SignInPw= request.getParameter("SignInPw");
+	String SignInId = request.getParameter("SignInId");
+	String SignInPw = request.getParameter("SignInPw");
 	String query = "select * from userinfo WHERE id =? and pw=?"; //db에서 unique key를 설정하는 게?  
 			
 	PreparedStatement pstmt = null;
