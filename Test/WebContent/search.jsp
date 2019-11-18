@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<form name="Searchform" action="search.jsp" method = "get">
+<form name="Searchform" action="search.jsp">
 	검색 : <input type ="text" size=20 name ="FindContentId">
 	
 	<select name="FindkindId">
@@ -42,7 +42,7 @@
 		<option value="칵테일">칵테일</option>
 	</select>
 	
-	<input type="submit" value="Find"><br>
+	<input type="button" value="Find"><br>
 </form>
 
 <%
@@ -79,13 +79,7 @@ else{
 	
 	
 	//만약 검색결과가 없으면 검색결과가 없다고 메시지 창 뜨게 하고 싶었어...
-   // if(rs.next()==false)
-    
 %>
-<script>
-//alert("검색결과가 없습니다.");
-</script>
-
 
 
 	<table>
@@ -101,26 +95,31 @@ else{
 			<td>칼로리</td>
 			<td>좋아요</td>
 			<td></td>
+			
 		</tr>
 	<%while(rs.next()) { %>
 		<tr>
 			<td><Image src="<%= rs.getString("url") %>" width = "150" height="150"></td>
 			<td><%= rs.getString("kind") %></td>
 			<td><%= rs.getString("name") %></td>
-			<td><%= rs.getString("ml") %></td>
+			<td><%= rs.getString("volume") %></td>
 			<td><%= rs.getString("price") %></td>		
 			<td><%= rs.getString("alcohol") %></td>
 			<td><%= rs.getString("sweet") %></td>
 			<td><%= rs.getString("tansan") %></td>
 			<td><%= rs.getString("calories") %></td>
 			<td><Image src="<%= rs.getString("likeimage") %>" width = "50" height="50"></td>
-			<td><%= rs.getString("like") %></td>
+			<td><%= rs.getString("love") %></td>
 			
 		</tr>
-<%} rs.close();
+	</table>
+<%} 
+	   if(rs.next()==false)
+		   out.println("검색결과가 없습니다.");
+	
+	rs.close();
 	stmt.close();
 	conn.close();
 %>
-	</table>
 </body>
 </html>
