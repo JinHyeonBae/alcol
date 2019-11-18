@@ -5,6 +5,11 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/*
+bootstrap.css 파일에서는 스타일의 형태변형이 가능하다.
+*/
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
