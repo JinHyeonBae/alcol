@@ -33,8 +33,8 @@
     		out.println("회원가입 정보가 없습니다.");
     	
 	}
-
- 
+	
+ 	conn.close();
 %>
 <body>
 </body>
