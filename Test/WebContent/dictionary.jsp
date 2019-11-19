@@ -55,8 +55,8 @@ function check(){
 <body>
 <form name="Searchform" action="search.jsp" method = "get">
 <center>
-        <input class = "btn btn-info" type="text"  size = "50"  name="search" placeholder="검색">
-        <select name="kind">
+        <input class = "btn btn-info" type="text"  size = "50"  name="FindContentId" placeholder="검색">
+        <select name="FindkindId">
 		<option value="%" selected>ALL</option>
 		<option value="소주">소주</option>
 		<option value="맥주">맥주</option>
