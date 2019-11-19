@@ -14,10 +14,7 @@ Class.forName("oracle.jdbc.driver.OracleDriver");
    String url = "jdbc:oracle:thin:@127.0.0.1:1521";
    Connection conn = DriverManager.getConnection(url,"test","1234");
    Statement stmt = conn.createStatement();
-   ResultSet rs;
-    
- 
-    
+   ResultSet rs;  
 %>
 </body>
 </html>

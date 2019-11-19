@@ -48,6 +48,7 @@ function check(){
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
+    
 <center><b><font class = "btn btn-warning" size ="15">술 사전</font></b></center>
 </head>
 <br>

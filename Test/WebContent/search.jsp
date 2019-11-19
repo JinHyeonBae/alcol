@@ -29,11 +29,10 @@
 <body>
 
 <form name="Searchform" action="search.jsp">
-	검색 : <input type ="text" size=20 name ="FindContentId">
+	검색 : <input type ="text" size=20 name ="search">
 	
-	<select name="FindkindId">
+	<select name="kind">
 		<option value="%" selected>ALL</option>
-		<option value="소주">레시피</option>
 		<option value="소주">소주</option>
 		<option value="맥주">맥주</option>
 		<option value="막걸리">막걸리</option>
@@ -42,46 +41,27 @@
 		<option value="칵테일">칵테일</option>
 	</select>
 	
-	<input type="button" value="Find"><br>
+	<input type="submit" value="Find"><br>
 </form>
 
 <%
-String query;
+String query=null;
 //이전 페이지의 url 값 받아오기
 String PreUrl = request.getHeader("referer");
 //dictionary.jsp에서 받은 값으로 검색한 결과 띄우고 싶은데 query 문이 하나밖에 안되네 ㅎ..우야지
 
 //만약 전 페이지가 dictionary.jsp 였으면 거기서 입력한 값 받아와서 검색
-	if(PreUrl=="http://localhost:8001/Test/WebContent/WEB-INF/dictionary.jsp"){
+
 	String kind = request.getParameter("kind");
 	String search = request.getParameter("search");
-	query = "select * from alcol WHERE name LIKE '%"+search+"%' and kind LIKE '"+kind+"'";
-	
-	}
- 
-//만약 전 페이지가 레시피 페이지라면 ....
-if(PreUrl =="http://localhost:8001/Test/recipes/recipe.jsp"){
-	String search_recipe=request.getParameter("search_recipe");
-	String kind = request.getParameter("kind");
-	query = "select * from recipe WHERE name Like '%"+search_recipe+"%' and kind LIKE 레시피";
-}
+	query = "select * from alcol WHERE name LIKE '%"+search+"%' and kind LIKE '%"+kind+"%'";
 
-//만약 search.jsp 에서 검색하는 거라면 ...
-else{
-	String FindId= request.getParameter("FindContentId");
-	String FindKindId = request.getParameter("FindkindId");
-	 query = "select * from alcol WHERE name LIKE '%"+FindId+"%' and kind LIKE '"+FindKindId+"'";
-}
 
 	stmt = conn.createStatement();
 	rs = stmt.executeQuery(query); 
 
-	
-	
 	//만약 검색결과가 없으면 검색결과가 없다고 메시지 창 뜨게 하고 싶었어...
 %>
-
-
 	<table>
 			<tr>
 			<td>이미지</td>		
@@ -97,7 +77,26 @@ else{
 			<td></td>
 			
 		</tr>
-	<%while(rs.next()) { %>
+	<%
+	//검색결과가 없을 때 
+	if(!rs.next()){
+	%>
+		<script>
+		alert("검색결과가 없습니다.");
+	}
+		</script>
+	<%}
+	else if(search =="")
+	  {
+	     %> 
+	     <script>
+	     alert("검색어를 입력하세요.");		
+	     </script>
+	 <%  }  
+
+	while(rs.next()) { 
+	
+	%>
 		<tr>
 			<td><Image src="<%= rs.getString("url") %>" width = "150" height="150"></td>
 			<td><%= rs.getString("kind") %></td>
@@ -114,9 +113,7 @@ else{
 		</tr>
 	</table>
 <%} 
-	   if(rs.next()==false)
-		   out.println("검색결과가 없습니다.");
-	
+	 
 	rs.close();
 	stmt.close();
 	conn.close();
