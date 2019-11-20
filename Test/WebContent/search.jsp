@@ -56,12 +56,16 @@
 	
 	DataBase db = new DataBase();
 	
-	int count = db.GetMaxContent(FindId, FindKindId) / 5;
-	StringBuffer sb = db.GetFindContent(FindId, FindKindId, PageNum);
+	int count = db.GetMaxContent(FindId, FindKindId) / 10;
+	if(db.GetMaxContent(FindId, FindKindId) % 5 != 0) {
+		count++;
+	}
+	
+	StringBuffer sb = db.GetFindContent(FindId, FindKindId, PageNum, 10);
 	
 %>
 	<table>
-			<tr>
+		<tr>
 			<td>이미지</td>		
 			<td>종류</td>
 			<td>이름</td>
@@ -72,11 +76,17 @@
 			<td>탄산</td>
 			<td>칼로리</td>
 			<td>좋아요</td>
-			<td></td>
-			
 		</tr>
 		<%= sb %>
 		<%= count %>
 	</table>
+	
+	<form name="Searchform" action="search.jsp">
+		<input type="hidden" name="FindContentId" value=<%= FindId %>>
+		<input type="hidden" name="FindkindId" value=<%= FindKindId %>>
+		<% for(int i = 1; i <= count; i++) { %>
+			<input type="submit" value=<%=i%> name="PageNum">
+		<% } %>
+	</form>
 </body>
 </html>
