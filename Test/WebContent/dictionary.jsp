@@ -55,13 +55,12 @@ function check(){
 <body>
 <form name="Searchform" action="search.jsp" method = "get">
 <center>
-        <input class = "btn btn-info" type="text"  size = "50"  name="FindContentId" placeholder="검색">
         <select name="FindkindId">
-		<option value="%" selected>ALL</option>
-		<option value="소주">소주</option>
-		<option value="맥주">맥주</option>
-		<option value="막걸리">막걸리</option>
-		<option value="담금주">담금주</option>
+			<option value="%" selected>ALL</option>
+			<option value="소주">소주</option>
+			<option value="맥주">맥주</option>
+			<option value="막걸리">막걸리</option>
+			<option value="담금주">담금주</option>
 		<option value="과실주">과실주</option>
 		<option value="칵테일">칵테일</option>
 	</select>

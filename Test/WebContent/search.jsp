@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
    
-<%@ include file="./db.jsp"%>
-
 <%@ page import="DataBase.DataBase"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.ArrayList"%>
@@ -47,16 +45,19 @@
 		<option value="칵테일">칵테일</option>
 	</select>
 	
+	<input type="hidden" name="PageNum" value="1">
 	<input type="submit" value="Find"><br>
 </form>
 
 <%
 	String FindId = request.getParameter("FindContentId");
 	String FindKindId = request.getParameter("FindkindId");
+	String PageNum = request.getParameter("PageNum");
 	
-	DataBase asd = new DataBase();
+	DataBase db = new DataBase();
 	
-	StringBuffer sb = asd.GetFindContent(FindId, FindKindId);
+	int count = db.GetMaxContent(FindId, FindKindId) / 5;
+	StringBuffer sb = db.GetFindContent(FindId, FindKindId, PageNum);
 	
 %>
 	<table>
@@ -75,6 +76,7 @@
 			
 		</tr>
 		<%= sb %>
+		<%= count %>
 	</table>
 </body>
 </html>
