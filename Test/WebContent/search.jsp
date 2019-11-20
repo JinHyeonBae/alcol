@@ -53,16 +53,12 @@
 	String FindId = request.getParameter("FindContentId");
 	String FindKindId = request.getParameter("FindkindId");
 	String PageNum = request.getParameter("PageNum");
+	int count = 0;
 	
 	DataBase db = new DataBase();
 	
-	int count = db.GetMaxContent(FindId, FindKindId) / 10;
-	if(db.GetMaxContent(FindId, FindKindId) % 5 != 0) {
-		count++;
-	}
-	
-	StringBuffer sb = db.GetFindContent(FindId, FindKindId, PageNum, 10);
-	
+	StringBuffer sb_drink = db.GetFindContent(FindId, FindKindId, "1", 5);
+	StringBuffer sb_recipe = db.GetFindRecipe(FindId, FindKindId, "1", 5);
 %>
 	<table>
 		<tr>
@@ -77,15 +73,38 @@
 			<td>칼로리</td>
 			<td>좋아요</td>
 		</tr>
-		<%= sb %>
-		<%= count %>
+		<%= sb_drink %>
 	</table>
 	
 	<form name="Searchform" action="search.jsp">
-		<input type="hidden" name="FindContentId" value=<%= FindId %>>
-		<input type="hidden" name="FindkindId" value=<%= FindKindId %>>
-		<% for(int i = 1; i <= count; i++) { %>
-			<input type="submit" value=<%=i%> name="PageNum">
+		<%
+		count = db.GetMaxContent("alcol", "WHERE name LIKE '%"+FindId+"%' and kind LIKE '%"+FindKindId+"%'", 5);
+		if(count != 0) {	
+		%>
+			<input type="hidden" name="FindContentId" value="<%=FindId%>">
+			<input type="hidden" name="FindkindId" value="<%=FindKindId%>">
+			<input type="submit" value="더보기.."><br>
+		<% } %>
+	</form>
+	
+	<table>
+		<tr>		
+			<td>이름</td>
+			<td>설명</td>
+			<td>조합</td>
+			<td>좋아요</td>
+			<td>종류</td>
+		</tr>
+		<%= sb_recipe %>
+	</table>
+	<form name="Searchform" action="search.jsp">
+		<%
+		count = db.GetMaxContent("recipe", "WHERE combinealcol LIKE '%"+FindKindId+"%'", 5);
+		if(count != 0) {	
+		%>
+			<input type="hidden" name="FindContentId" value="<%=FindId%>">
+			<input type="hidden" name="FindkindId" value="<%=FindKindId%>">
+			<input type="submit" value="더보기.."><br>
 		<% } %>
 	</form>
 </body>

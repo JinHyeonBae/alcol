@@ -32,7 +32,7 @@
 <%
 	DataBase db = new DataBase();
 
-	StringBuffer sb = db.GetRecommend(1.0f, 1.0f, 1.0f);
+	StringBuffer sb = db.GetRecommend(2.0f, 0.0f, 3.0f);
 %>
 	<table>
 		<tr>		
@@ -44,5 +44,6 @@
 		</tr>
 		<%= sb %>
 	</table>
+	
 </body>
 </html>
