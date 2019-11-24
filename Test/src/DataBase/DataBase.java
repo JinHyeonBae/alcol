@@ -203,8 +203,6 @@ public class DataBase {
 					sb.append("<td>" + rs.getString("sweet") + "</td>");
 					sb.append("<td>" + rs.getString("tansan") + "</td>");
 					sb.append("<td>" + rs.getString("calories") + "</td>");
-					sb.append("<td><Image src=\"" + rs.getString("likeimage") + "\" width = \"50\" height=\"50\"></td>");
-					sb.append("<td>" + rs.getString("alcohol") + "</td>");
 					sb.append("<td>" + rs.getString("love") + "</td>");
 				sb.append("</tr>");
 			}
@@ -252,7 +250,7 @@ public class DataBase {
 		StringBuffer sb = new StringBuffer();
 
 		try {
-			String query = GetPageingQurey("recipe", "WHERE combinealcol LIKE '%"+FindId+"%' and combinealcol LIKE '%"+FindKindId+"%' and", pageNum, maxContent);
+			String query = GetPageingQurey("recipe", "WHERE combinename LIKE '%"+FindId+"%' and combinealcol LIKE '%"+FindKindId+"%' and", pageNum, maxContent);
 			
 			conn = Connect();
 			

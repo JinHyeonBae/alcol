@@ -36,7 +36,6 @@
 	
 	<select name="FindkindId">
 		<option value="%" selected>ALL</option>
-		<option value="recipe">레시피</option>
 		<option value="소주">소주</option>
 		<option value="맥주">맥주</option>
 		<option value="막걸리">막걸리</option>
@@ -52,13 +51,13 @@
 <%
 	String FindId = request.getParameter("FindContentId");
 	String FindKindId = request.getParameter("FindkindId");
-	String PageNum = request.getParameter("PageNum");
+	String PageNum = request.getParameter("pageNum");
 	int count = 0;
 	
 	DataBase db = new DataBase();
 	
 	StringBuffer sb_drink = db.GetFindContent(FindId, FindKindId, "1", 5);
-	StringBuffer sb_recipe = db.GetFindRecipe(FindId, FindKindId, "1", 5);
+	StringBuffer sb_recipe = db.GetFindRecipe(FindId, FindKindId, PageNum, 5);
 %>
 	<table>
 		<tr>
@@ -104,6 +103,9 @@
 		%>
 			<input type="hidden" name="FindContentId" value="<%=FindId%>">
 			<input type="hidden" name="FindkindId" value="<%=FindKindId%>">
+			<%for(int i = 1; i < count + 1; i++) {%>
+				<input type="submit" name="pageNum" value="<%=i%>">
+			<% } %>
 			<input type="submit" value="더보기.."><br>
 		<% } %>
 	</form>
