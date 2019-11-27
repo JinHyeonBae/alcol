@@ -169,6 +169,73 @@ public class DataBase {
 		return query;
 	}
 	
+	public StringBuffer Dictionary(String page, int maxContent)
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int pageNum = 1;
+		
+		if(page != null) pageNum = Integer.parseInt(page);
+		
+		StringBuffer sb = new StringBuffer();
+
+		try {
+			String query = null;
+			query = GetPageingQurey("alcol", "where", pageNum, 5);
+			
+			conn = Connect();
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+			
+			while(rs.next())
+			{
+				sb.append("<tr>");
+					sb.append("<td><Image src=\"" + rs.getString("url") + "\" width = \"150\" height=\"150\"></td>");
+					sb.append("<td>" + rs.getString("kind") + "</td>");
+					sb.append("<td>" + rs.getString("name") + "</td>");
+					sb.append("<td>" + rs.getString("volume") + "</td>");
+					sb.append("<td>" + rs.getString("price") + "</td>");
+					sb.append("<td>" + rs.getString("alcohol") + "</td>");
+					sb.append("<td>" + rs.getString("sweet") + "</td>");
+					sb.append("<td>" + rs.getString("tansan") + "</td>");
+					sb.append("<td>" + rs.getString("calories") + "</td>");
+					sb.append("<td>" + rs.getString("love") + "</td>");
+				sb.append("</tr>");
+			}
+			
+			conn.commit();
+			
+		} catch (Exception sqle) {
+			try {
+				conn.rollback();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} //throw new RuntimeException(sqle.getMessage());
+		}  finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+					stmt = null;
+				}
+				if(conn != null) {
+					conn.close();
+					conn = null;
+				}
+				if(rs != null) {
+					rs.close();
+					rs = null;
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+
+		return sb;
+	}
+	
 	
 	public StringBuffer GetFindContent(String FindId, String FindKindId, String page, int maxContent)
 	{
