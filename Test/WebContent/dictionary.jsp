@@ -5,23 +5,7 @@
 <%@ page import="DataBase.DataBase"%>    
 <!DOCTYPE html>
 <html>
-<style>
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
 
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #dddddd;
-	}
-</style>
     <br><br><br><br>  
     
 	<%  
@@ -34,17 +18,20 @@
 %>
 
 <head>
+
+	<link href="css/NewFile.css" rel="stylesheet" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<center><b><font size ="15">술 사전</font></b></center>
+    
+	<div>술 사전</div>
 </head>
 <br>
 
 <body>
 <form name="Searchform" action="search.jsp" method = "get">
 
-<center>
-검색 : <input type ="text" size=20 name ="FindContentId">
+
+<li>검색 : <input type ="text" size=20 name ="FindContentId">
         <select name="FindkindId">
 			<option value="%" selected>ALL</option>
 			<option value="소주">소주</option>
@@ -55,26 +42,32 @@
 		<option value="칵테일">칵테일</option>
 	</select>
 	<input type="submit" value="검색"><br>
-</center>
+</li>
 </form>
 
 <br><br>
 
-	<table>
+	<table class = "dictionary">
+	 <thead>
 			<tr>
-			<td>이미지</td>		
-			<td>종류</td>
-			<td>이름</td>
-			<td>용량</td>
-			<td>가격</td>
-			<td>도수</td>
-			<td>당도</td>
-			<td>탄산</td>
-			<td>칼로리</td>
-			<td>좋아요</td>
-			<td></td>
+			<th scope="row">이미지</th>		
+			<th scope="row">종류</th>
+			<th scope="row">이름</th>
+			<th scope="row">용량</th>
+			<th scope="row">가격</th>
+			<th scope="row">도수</th>
+			<th scope="row">당도</th>
+			<th scope="row">탄산</th>
+			<th scope="row">칼로리</th>
+			<th scope="row">좋아요</th>
+			<th scope="row"></th>
 		</tr>	
+		</thead>
+		
+		 <tbody>
 		<%= sb_drink %>
+		</tbody>
+		
 	</table>
 	
 		 <form name="Dictionaryform" action="dictionary.jsp">
