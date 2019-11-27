@@ -637,7 +637,7 @@ public class DataBase {
 		
 		StringBuffer str = new StringBuffer();
 		int Page_num = Integer.parseInt(pageNum);
-		String query = GetPageingQurey("myrecipe", "WHERE",Page_num,5);
+		String query = GetPageingQurey("myrecipe","WHERE",Page_num,5);
 		 //레시피 데이터를 담을 list
 		try {
 			conn = Connect();
@@ -682,7 +682,122 @@ public class DataBase {
 		}
 		return str;
 	}
+	public int SignUp(String id, String pw, String email, String phone) //회원가입 함수
+	{
+	   Connection conn = null;
+	   Statement stmt = null;
+	   ResultSet rs = null;
+	   
+	   int count =0; //executeUpdate문 결과값 받을 변수 
+	   
+	   try {
+	      
+	      String query ="INSERT INTO userinfo VALUES(?,?,?,?)"; //회원가입 시 데이터베이스에 연결
+	      conn = Connect();
+	   
+	      PreparedStatement pstmt =null;
+	      pstmt = conn.prepareStatement(query);
+	      pstmt.setString(1, id);
+	      pstmt.setString(2,pw);
+	      pstmt.setString(3,email);
+	      pstmt.setString(4,phone);
+	      
+	      count = pstmt.executeUpdate();
+	      
+	      conn.commit();
+	   
+	   }   catch (Exception sqle){
+	      try {
+	         conn.rollback();
+	      } catch(SQLException e) {
+	         e.printStackTrace();
+	      } //throw new RuntimeException(sqle.getMessage());
+	   }  finally {
+	      try {
+	         if (stmt != null) {
+	            stmt.close();
+	            stmt = null;
+	         }
+	         if(conn != null) {
+	            conn.close();
+	            conn = null;
+	         }
+	         if(rs !=null) {
+	            rs.close();
+	            rs = null;
+	         }
+	      } catch (Exception e) {
+	         throw new RuntimeException(e.getMessage());
+	      }
+	   }
+	   return count;
+	}
+	public StringBuffer Dictionary(String page, int maxContent)
+	   {
+	      Connection conn = null;
+	      Statement stmt = null;
+	      ResultSet rs = null;
+	      
+	      int pageNum = 1;
+	      
+	      if(page != null) pageNum = Integer.parseInt(page);
+	      
+	      StringBuffer sb = new StringBuffer();
 
-	
+	      try {
+	         String query = null;
+	         query = GetPageingQurey("alcol", "where", pageNum, 5);
+	         
+	         conn = Connect();
+	         
+	         stmt = conn.createStatement();
+	         rs = stmt.executeQuery(query);
+	         
+	         while(rs.next())
+	         {
+	            sb.append("<tr>");
+	               sb.append("<td><Image src=\"" + rs.getString("url") + "\" width = \"150\" height=\"150\"></td>");
+	               sb.append("<td>" + rs.getString("kind") + "</td>");
+	               sb.append("<td>" + rs.getString("name") + "</td>");
+	               sb.append("<td>" + rs.getString("volume") + "</td>");
+	               sb.append("<td>" + rs.getString("price") + "</td>");
+	               sb.append("<td>" + rs.getString("alcohol") + "</td>");
+	               sb.append("<td>" + rs.getString("sweet") + "</td>");
+	               sb.append("<td>" + rs.getString("tansan") + "</td>");
+	               sb.append("<td>" + rs.getString("calories") + "</td>");
+	               sb.append("<td>" + rs.getString("love") + "</td>");
+	            sb.append("</tr>");
+	         }
+	         
+	         conn.commit();
+	         
+	      } catch (Exception sqle) {
+	         try {
+	            conn.rollback();
+	         } catch(SQLException e) {
+	            e.printStackTrace();
+	         } //throw new RuntimeException(sqle.getMessage());
+	      }  finally {
+	         try {
+	            if (stmt != null) {
+	               stmt.close();
+	               stmt = null;
+	            }
+	            if(conn != null) {
+	               conn.close();
+	               conn = null;
+	            }
+	            if(rs != null) {
+	               rs.close();
+	               rs = null;
+	            }
+	         } catch (Exception e) {
+	            throw new RuntimeException(e.getMessage());
+	         }
+	      }
+
+	      return sb;
+	   }
+
 	
 }
