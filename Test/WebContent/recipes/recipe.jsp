@@ -8,14 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>레시피</title>
 </head>
-<!-- <script>
+<!--
+<script>
     function addHeart(e){ //좋아요 버튼 자체를 가져왔다.
       var location_div1 = document.getElementById("top");
       var location_div2 = document.getElementById("middle";)
       var location_btn = document.getElementById(e.getAttribute('id')).getAttribute('id');
    
    }
-</script> -->
+</script>
+-->
 <body>
 
 <div id="top">

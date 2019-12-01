@@ -1,5 +1,8 @@
 package DataBase;
 
+import Drink.*;
+
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -7,168 +10,7 @@ import java.util.Comparator;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 
-class DrinkInfo{
-   private String URL;
-   private String Kind;
-   private String Name;
-   private int Volume;
-   private int Alcohol;
-   private int Sweet;
-   private int Tansan;
-   private int Calories;
-   private String LinkImage;
-   private int Love;
-   
-   private float Size;
-   
-   public String getURL() {
-      return URL;
-   }
-   public void setURL(String url) {
-      URL = url;
-   }
-   public String getKind() {
-      return Kind;
-   }
-   public void setKind(String kind) {
-      Kind = kind;
-   }
-   public String getName() {
-      return Name;
-   }
-   public void setName(String name) {
-      Name = name;
-   }
-   public int getVolume() {
-      return Volume;
-   }
-   public void setVolume(int volume) {
-      Volume = volume;
-   }
-   public int getAlcohol() {
-      return Alcohol;
-   }
-   public void setAlcohol(int alcohol) {
-      Alcohol = alcohol;
-   }
-   public int getSweet() {
-      return Sweet;
-   }
-   public void setSweet(int sweet) {
-      Sweet = sweet;
-   }
-   public int getTansan() {
-      return Tansan;
-   }
-   public void setTansan(int tansan) {
-      Tansan = tansan;
-   }
-   public int getCalories() {
-      return Calories;
-   }
-   public void setCalories(int calories) {
-      Calories = calories;
-   }
-   public String getLinkImage() {
-      return LinkImage;
-   }
-   public void setLinkImage(String linkImage) {
-      LinkImage = linkImage;
-   }
-   public int getLove() {
-      return Love;
-   }
-   public void setLove(int love) {
-      Love = love;
-   }
-   public float getSize() {
-      return Size;
-   }
-   public void setSize(float size) {
-      Size = size;
-   }
-}
-
 public class DataBase {
-   public Connection Connect() throws SQLException, NamingException, ClassNotFoundException
-   {   
-       String driverName="oracle.jdbc.driver.OracleDriver";
-       String url = "jdbc:oracle:thin:@127.0.0.1:1521";
-       String DBid = "test";
-       String DBpw = "1234";
-      
-       Class.forName(driverName);
-       
-      return DriverManager.getConnection(url, DBid, DBpw);
-   }
-   
-   public int GetMaxContent(String table, String str, int max)
-   {
-      Connection conn = null;
-      Statement stmt = null;
-      ResultSet rs = null;
-      
-      int count = 0;
-      
-      try {
-         String query = "select COUNT(*) from " + table + " " + str;
-         
-         conn = Connect();
-         
-         stmt = conn.createStatement();
-         rs = stmt.executeQuery(query);
-         
-         if(rs.next())
-            count = rs.getInt("COUNT(*)");
-         
-         count /= max;
-         
-         if(count % max != 0)
-            count++;
-            
-         
-         conn.commit();
-         
-      } catch (Exception sqle) {
-         try {
-            conn.rollback();
-         } catch(SQLException e) {
-            e.printStackTrace();
-         } //throw new RuntimeException(sqle.getMessage());
-      }  finally {
-         try {
-            if (stmt != null) {
-               stmt.close();
-               stmt = null;
-            }
-            if(conn != null) {
-               conn.close();
-               conn = null;
-            }
-            if(rs != null) {
-               rs.close();
-               rs = null;
-            }
-         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-         }
-      }
-      
-      return count;
-   }
-   
-   public String GetPageingQurey(String tablename, String str, int pageNum, int maxContent)
-   {
-      String query = "SELECT * "
-            + "FROM( "
-            + "SELECT ROWNUM AS RNUM, A.* "
-                  + "FROM " + tablename + " A "
-               + str + " ROWNUM <= " + pageNum * maxContent + " "
-            + ") "
-         + "WHERE RNUM > " + ((pageNum * maxContent) - maxContent);
-      return query;
-   }
-   
    
    public StringBuffer GetFindContent(String FindId, String FindKindId, String page, int maxContent)
    {
@@ -184,7 +26,7 @@ public class DataBase {
 
       try {
          String query = null;
-         query = GetPageingQurey("alcol", "WHERE name LIKE '%"+FindId+"%' and kind LIKE '%"+FindKindId+"%' and", pageNum, maxContent);
+         query = GetPageingQurey("alcol", "WHERE name LIKE '%"+FindId+"%' and kind LIKE '%"+FindKindId+"%'", pageNum, maxContent);
          
          conn = Connect();
          
@@ -532,7 +374,7 @@ public class DataBase {
          
          stmt = conn.createStatement();
          rs = stmt.executeQuery(query);
-         int i=0;
+         int i = 0;
          
          if(SignInId == "" || SignInPw == "")
             return -2;         // 정보입력이 없을 경우..
