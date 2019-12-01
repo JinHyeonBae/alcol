@@ -5,8 +5,10 @@
 <%@ page import="DataBase.DataBase"%>    
 <!DOCTYPE html>
 <html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/NewFile.css" rel="stylesheet" type="text/css">
 
-    <br><br><br><br>  
     
 	<%  
     String PageNum_drink = request.getParameter("pageNum_drink");
@@ -17,21 +19,15 @@
     StringBuffer sb_drink = db.Dictionary(PageNum_drink, 5);
 %>
 
-<head>
 
-	<link href="css/NewFile.css" rel="stylesheet" type="text/css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-	<div>술 사전</div>
-</head>
-<br>
+<div class="frame">
+<div class="header">
+<h1>술사전</h1>
+</div>
 
-<body>
+<div class="middle">
 <form name="Searchform" action="search.jsp" method = "get">
-
-
-<li>검색 : <input type ="text" size=20 name ="FindContentId">
+ <input type ="text" size=20 name ="FindContentId" placeholder="Search.."> 
         <select name="FindkindId">
 			<option value="%" selected>ALL</option>
 			<option value="소주">소주</option>
@@ -41,48 +37,46 @@
 		<option value="과실주">과실주</option>
 		<option value="칵테일">칵테일</option>
 	</select>
-	<input type="submit" value="검색"><br>
-</li>
+	<input type="submit" class="search" value="검색"><br>
+ 
 </form>
+</div>
 
-<br><br>
+<div class="container">
 
-	<table class = "dictionary">
-	 <thead>
-			<tr>
-			<th scope="row">이미지</th>		
-			<th scope="row">종류</th>
-			<th scope="row">이름</th>
-			<th scope="row">용량</th>
-			<th scope="row">가격</th>
-			<th scope="row">도수</th>
-			<th scope="row">당도</th>
-			<th scope="row">탄산</th>
-			<th scope="row">칼로리</th>
-			<th scope="row">좋아요</th>
-			<th scope="row"></th>
-		</tr>	
-		</thead>
+<div id="table">
+			<div class="head">
+			<span class="cell col1">이미지</span>		
+			<span class="cell col2">종류</span>	
+			<span class="cell col3">이름</span>	
+			<span class="cell col4">용량</span>	
+			<span class="cell col5">가격</span>	
+			<span class="cell col6">도수</span>		
+			<span class="cell col7">당도</span>	
+			<span class="cell col8">탄산</span>		
+			<span class="cell col9">칼로리</span>	
+			<span class="cell col10">좋아요 그림</span>		
+			<span class="cell col11">좋아요 수</span>	
+			</div>
+	</div>
+	<div id="table"><%= sb_drink %></div>
 		
-		 <tbody>
-		<%= sb_drink %>
-		</tbody>
-		
-	</table>
+	</div>
 	
+	<div class="footer">
 		 <form name="Dictionaryform" action="dictionary.jsp">
         <%
         count = db.GetMaxContent("alcol", "", 5);
         if(count != 0) {
         %>
             <%for(int i = 1; i < count + 1; i++) {%>
-                <input type="submit" name="pageNum_drink" value="<%=i%>">
+                <input type="submit" class ="button" name="pageNum_drink" value="<%=i%>">
             <% } %>
         <% } %>
     </form>
+</div>
 
-	
-	
 
-</body>
+
+</div>
 </html>

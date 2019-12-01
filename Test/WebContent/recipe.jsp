@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link href="./css/NewFile.css" rel="stylesheet" type="text/css">
+
 <title>레시피</title>
 </head>
 <!-- <script>

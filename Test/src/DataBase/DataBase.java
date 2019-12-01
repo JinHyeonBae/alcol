@@ -18,6 +18,7 @@ class DrinkInfo{
    private int Calories;
    private String LinkImage;
    private int Love;
+
    
    private float Size;
    
@@ -87,6 +88,7 @@ class DrinkInfo{
    public void setSize(float size) {
       Size = size;
    }
+
 }
 
 public class DataBase {
@@ -755,18 +757,22 @@ public class DataBase {
             
             while(rs.next())
             {
-               sb.append("<tr>");
-                  sb.append("<td><Image src=\"" + rs.getString("url") + "\" width = \"150\" height=\"150\"></td>");
-                  sb.append("<td>" + rs.getString("kind") + "</td>");
-                  sb.append("<td>" + rs.getString("name") + "</td>");
-                  sb.append("<td>" + rs.getString("volume") + "</td>");
-                  sb.append("<td>" + rs.getString("price") + "</td>");
-                  sb.append("<td>" + rs.getString("alcohol") + "</td>");
-                  sb.append("<td>" + rs.getString("sweet") + "</td>");
-                  sb.append("<td>" + rs.getString("tansan") + "</td>");
-                  sb.append("<td>" + rs.getString("calories") + "</td>");
-                  sb.append("<td>" + rs.getString("love") + "</td>");
-               sb.append("</tr>");
+               sb.append("<div class=\"row\">");
+                  sb.append("<span class=\"cell col1\"><Image src=\"" + rs.getString("url") + "\" width = \"100\" height=\"100\"></span>");
+                  sb.append("<span class=\"cell col2\">" + rs.getString("kind") + "</span>");
+                  sb.append("<span class=\"cell col3\">" + rs.getString("name") + "</span>");
+                  sb.append("<span class=\"cell col4\">" + rs.getString("volume") + "</span>");
+                  sb.append("<span class=\"cell col5\">" + rs.getString("price") + "</span>");
+                  sb.append("<span class=\"cell col6\">" + rs.getString("alcohol") + "</span>");
+                  sb.append("<span class=\"cell col7\">" + rs.getString("sweet") + "</span>");
+                  sb.append("<span class=\"cell col8\">" + rs.getString("tansan") + "</span>");
+                  sb.append("<span class=\"cell col9\">" + rs.getString("calories") + "</span>");
+                  sb.append("<span class=\"cell col10\">\r\n" + 
+                  		"\r\n" + 
+                  		"<a onclick=\"return confirm('추천하시겠습니까?')\" href=\"./dictionary.jsp>\">추천</a>\r\n"  
+                  		 +"</span>");
+                  sb.append("<span class=\"cell col1\">" + rs.getString("love") + "</span>");
+               sb.append("</div>");
             }
             
             conn.commit();
@@ -799,5 +805,46 @@ public class DataBase {
          return sb;
       }
 
-   
+   public int like(String evaluationID) {
+
+		PreparedStatement pstmt = null;
+	      Connection conn = null;
+	         Statement stmt = null;
+	         ResultSet rs = null;
+		try {
+
+			String SQL = "UPDATE alcohol SET love = love + 1 WHERE ID = ?";
+
+			pstmt = conn.prepareStatement(SQL);
+
+			pstmt.setInt(1, Integer.parseInt(evaluationID));
+
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if(pstmt != null) pstmt.close();
+
+				if(conn != null) conn.close();
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			}
+
+		}
+
+		return -1;
+
+	}
+
+
+
 }

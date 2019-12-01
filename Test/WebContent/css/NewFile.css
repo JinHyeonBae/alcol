@@ -1,81 +1,92 @@
-@charset "utf-8";
+@charset "UTF-8";
+  body {
+            background: #C2DABC;
+ font: 15px arial, sans-serif;        }
+        
+ .frame{
+  font: 15px arial, sans-serif;
+  width: 1200px;
+  margin: 0 auto; <!--가운데정렬 -->
+  border: 1px solod #aaa;      
+        }
 
-div{
-	  margin: 0;
- 	 padding: 20px 0;    
-  	color: black;
-	  font-size: 40px;
-	  font-family: Sans-serif;
- 	 text-align: center;
+.header{
+	  text-shadow: 0 0 3px #FF0000;
+	 font: 30px arial, sans-serif;
+	padding:10px 10px;
+	text-align: center;
+	background: #65bf00;
+	margin-bottom: 10px; <!--middle과의간격을줌-->
+}  
+
+.middle{
+	 font: 20px arial, sans-serif;
+	background: #808000;
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px
 }
-
-
-
-table.dictionary {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    border-left: 1px solid #ccc;
-    margin: 20px 10px;
-    color: black;
-    cellpadding="20px"
-}
-
-table.dictionary thead th {
-    padding: 10px;
-    font-weight: bold;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 2px solid #c00;
-    background: #008000;
-}
-table.dictionary tbody th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background: #ececec;
-}
-table.dictionary td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background: #808040;
-}
-
-input[type=text] {
-  border: 2px solid blue;
-  border-radius: 4px;
-  	text-align: center;
-    background-image: url('file:///C:/apache-tomcat-9.0.24/ProjectAlcol/alcol/Test/WebContent/Image/searching.png');
-}
-
-li{
-	  font-size: 20px;
-	  color: black;
-	 	 text-align: center;
+.container{
+	 font: 15px arial, sans-serif;
+	background: #ffffff;
+	margin-bottom: 20px; <!--middle과의간격을줌-->
 	
 }
-select {
-  width: 100%;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #f1f1f1;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: #4CAF50;
+.footer{
+	 font: 15px arial, sans-serif;
+	text-align: center;
+	border-top: 1px solod #aaa;
+	font-size: 20px
+}      
+#table {display: table; width: 100%; border: 1px solid #000000;  }
+.head{background : #DDD; display: table-row; border : 1px solid #000000; font: 25px arial, sans-serif;}
+.row {display: table-row; border : 1px solid #000000;  }
+.cell {display: table-cell; padding: 3px; border: 1px solid #000000; font: 25px arial, sans-serif; }
+.col1 {width: 10%; }
+.col2 {width: 9%;  }
+.col3 {width: 9%;}
+.col4 {width: 9%;}
+.col5 {width: 9%;}
+.col6 {width: 9%;}
+.col7 {width: 9%;}
+.col8 {width: 9%;}
+.col9 {width: 9%;}
+.col10 {width: 9%;}
+.col11 {width: 9%;}
+
+.button {
+  background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 15px 32px;
+  text-align: center;
   text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:8px;
+   opacity: 0.6; <!--누르면 바뀌어->
 }
-input[type='button']:hover{
-background-color:lightgray;
+.button:hover {opacity: 1}
+.search:hover {opacity: 1}
+.search{
+background-color: #804000; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:8px;
+   opacity: 0.6; <!--누르면 바뀌어->
+}
+input[type=text] {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 25px;
+  background-color: white;
+  background-image: url('./image_recipe/search_img.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
 }
