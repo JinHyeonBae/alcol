@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="./css/NewFile.css" rel="stylesheet" type="text/css">
-
+<title>사전 페이지</title>
     
 	<%  
     String PageNum_drink = request.getParameter("pageNum_drink");
@@ -49,12 +49,12 @@
 			<span class="cell col1">이미지</span>		
 			<span class="cell col2">종류</span>	
 			<span class="cell col3">이름</span>	
-			<span class="cell col4">용량</span>	
-			<span class="cell col5">가격</span>	
-			<span class="cell col6">도수</span>		
+			<span class="cell col4">용량(ml)</span>	
+			<span class="cell col5">가격(원)</span>	
+			<span class="cell col6">도수(도)</span>		
 			<span class="cell col7">당도</span>	
 			<span class="cell col8">탄산</span>		
-			<span class="cell col9">칼로리</span>	
+			<span class="cell col9">칼로리(kcal)</span>	
 			<span class="cell col10">좋아요 그림</span>		
 			<span class="cell col11">좋아요 수</span>	
 			</div>

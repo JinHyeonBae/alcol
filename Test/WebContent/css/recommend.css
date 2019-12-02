@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+  body {
+            background: #C2DABC;
+ font: 15px arial, sans-serif;        }
+ 
+.header{
+	  text-shadow: 0 0 3px #FF0000;
+	 font: 30px arial, sans-serif;
+	padding:10px 10px;
+	text-align: center;
+	background: #65bf00;
+	margin-bottom: 80px; <!--middle과의간격을줌-->
+}  
+.container{
+	 font: 15px arial, sans-serif;
+	margin-bottom: 20px; <!--middle과의간격을줌-->
+	
+}
+.middle{
+	 font: 20px arial, sans-serif;
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px
+}
+ .frame{
+  font: 15px arial, sans-serif;
+  width: 1200px;
+  margin: 0 auto; <!--가운데정렬 -->
+  border: 1px solod #aaa;     
+ 
+        }
+
+.footer{
+	 font: 15px arial, sans-serif;
+	text-align: center;
+	border-top: 1px solod #aaa;
+	font-size: 20px;
+		background: #ffffff;
+}    
+
+#table {display: table; width: 100%; border: 1px solid #000000; background: #ffffff;
+  }
+.head{background : #DDD; display: table-row; border : 1px solid #000000; font: 25px arial, sans-serif;}
+.row {display: table-row; border : 1px solid #000000;  }
+.cell {display: table-cell; padding: 3px; border: 1px solid #000000; font: 25px arial, sans-serif; }
+.col1 {width: 20%; background:#48ae11; }
+.col2 {width: 80%;  }
+.co1{width: 20%;}
+.co2{width: 20%;}
+.co3{width: 20%;}
+.co4{width: 20%;}
+.co5{width: 20%;}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:8px;
+   opacity: 0.6; <!--누르면 바뀌어->
+}
+.button:hover {opacity: 1}
