@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.util.*"%>
-<%@ page import="DataBase.DataBase"%>
+<%@ page import="UserInfo.UserLogin"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -22,7 +22,7 @@
 	</script>
 <% } 
 
-	DataBase NewUser = new DataBase(); 
+	UserLogin NewUser = new UserLogin(request); 
 	result = NewUser.SignUp(id, pw, email,phone);
 	%>
 

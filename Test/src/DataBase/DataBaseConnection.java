@@ -2,30 +2,31 @@ package DataBase;
 
 import java.sql.*;
 
+import javax.naming.NamingException;
+
 public class DataBaseConnection {
 	private static final String driverName="oracle.jdbc.driver.OracleDriver";
 	private static final String url = "jdbc:oracle:thin:@127.0.0.1:1521";
 	private static final String DBid = "test";
 	private static final String DBpw = "1234";
 	
-	public static Connection getConnection()
-	{
-		Connection conn = null;
-		
-		try
-		{
+	public static Connection getConnection() 
+	{ 
+		Connection conn = null; 
+		 
+		try 
+		{ 
 			Class.forName(driverName);
-		       
-			conn = DriverManager.getConnection(url, DBid, DBpw);
-		} catch (ClassNotFoundException e) {
-			System.out.println("DB µå¶óÀÌ¹ö ·Îµù ½ÇÆÐ : " + e.toString());
-		} catch (SQLException e) {
-			System.out.println("DB Á¢¼Ó ½ÇÆÐ : " + e.toString());
-		} catch (Exception e) {
-			System.out.println("Unknown Error : " + e.toString());
-			e.printStackTrace();
-		}
-		
-		return conn;
-	}
+			
+			conn = DriverManager.getConnection(url, DBid, DBpw); 
+		} catch (ClassNotFoundException e) { 
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ : " + e.toString()); 
+		} catch (SQLException e) { 
+			System.out.println("DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + e.toString()); 
+		} catch (Exception e) { 
+			System.out.println("Unknown Error : " + e.toString()); 
+			e.printStackTrace(); 
+		} 	 
+		return conn; 
+	} 
 }

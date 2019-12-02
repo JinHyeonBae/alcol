@@ -1,4 +1,5 @@
 <%@page import="Drink.DrinkContent"%>
+<%@page import="UserInfo.UserLogin"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     
@@ -33,7 +34,12 @@
 <%
 	DrinkContent dc = new DrinkContent();
 	DrinkPaging dp = dc.getRecipeContent("", "1", 5);
+	
+	UserLogin userlogin = new UserLogin(request);
+	
+	userlogin.Logout();
 %>
+	<%= session.getAttribute("id") %>
 
 	<table>
         <tr>
@@ -46,6 +52,5 @@
         </tr>
         <%= dp.getSb() %>
     </table>
-
 </body>
 </html>

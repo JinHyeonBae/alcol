@@ -2,17 +2,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="login.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 
+<script>
+   function PageChange(id1,id2){ //SignUp_box, login_box
+      id2.style.display= "none";
+      id1.style.display= "block";   
+   }
+</script>
+
 <body>
-<form action="loginCompare.jsp" method ="post">
-	로그인 : <input type ="text" size ="20" name="SignInId"><br>
-	비밀번호 : <input type="password" size="20" name="SignInPw">
-	<input type="submit" value="로그인">
-	</form>
-	<form action="./SignUp.html">
-	<input type="submit" value ="회원가입"> 
-	</form>
+<h1> <a href="javascript:;" id="login" onclick="PageChange(login_box,SignUp_box);">Login</a>&emsp;&emsp;
+<a href="javascript:;" id="signUp" onclick="PageChange(SignUp_box,login_box);">Sign Up</a></h1>
+
+<div id="login_box"> 
+   <form action="loginCompare.jsp" method ="post">
+      <center>
+         <input type ="text" size="40" name="SignInId" style="height:30px" placeholder="ID"><br><br>
+         <input type="password" size="40" name="SignInPw" style="height:30px" placeholder="PassWord"/> 
+      </center>   
+      <br> 
+      <input type="submit" value="Login" class="bnt1" required autocomplete="off"/>
+   </form>
+</div>
+
+<div id="SignUp_box" style="display:none">
+   <form action="SignUp.jsp" method="post">
+      <center>
+         <input type="text" size="40" style="height:30px" name="SignUpId" placeholder="ID"/><br><br>
+         <input type="password" size="40" style="height:30px" name="SignUpPw" placeholder="PassWord"/><br><br>
+         <input type="email" size="40" style="height:30px" name="email" required autocomplete="off" placeholder="email"/><br><br>
+         <select name="phone1" size="10" width="10" height="20" style="height:20px">
+       <option value="">::선택::</option>
+       <option value="011">011</option>
+       <option value="016">016</option>
+       <option value="017">017</option>
+       <option value="019">019</option>
+       <option value="010">010</option>
+   </select>
+         -<input type="text" size="10" style="height:20px" name="phone2" placeholder="phone"/>-<input type="text" size="10" style="height:20px" placeholder="number" name="phone3"/><br><br>
+         <input type="submit" value="Sign Up" class="bnt2"/>   
+      </center>
+   </form>
+</div>
 </body>
 </html>
