@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+h1{
+	text-align : center;
+	color : white;
+}
+.bnt1{
+	position: absolute; left: 50%; transform: translateX(-50%);
+	background-color: #C2DABC;
+	border:0;
+ 	outline:none;
+  	border-radius:0;
+  	font-size: 20px;
+  	font-weight: 300;
+  	color: white;
+}
+a{	
+	color: white;	
+}
+.bnt2{
+	position: absolute; left: 50%; transform: translateX(-50%);
+	background-color: #C2DABC;
+	border:0;
+ 	outline:none;
+  	border-radius:0;
+  	font-size: 20px;
+  	font-weight: 300;
+  	color: white;
+} 
+body{
+	background-color : #C2DABC;
+	margin-top: 200px;
+}
+#login_box{
+	margin: 30px;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+
+
