@@ -5,15 +5,17 @@
  font: 15px arial, sans-serif;        }
  
 .header{
-	  text-shadow: 0 0 3px #FF0000;
-	 font: 30px arial, sans-serif;
+	color:white;
+font-family:"주아체";
+	  font-size:30px;
 	padding:10px 10px;
 	text-align: center;
-	background: #65bf00;
+            background: #C2DABC;
 	margin-bottom: 80px; <!--middle과의간격을줌-->
 }  
 .container{
-	 font: 15px arial, sans-serif;
+	 font-family:"주아체";
+	   font-size:15px;
 	margin-bottom: 20px; <!--middle과의간격을줌-->
 	
 }
@@ -41,10 +43,10 @@
 
 #table {display: table; width: 100%; border: 1px solid #000000; background: #ffffff;
   }
-.head{background : #DDD; display: table-row; border : 1px solid #000000; font: 25px arial, sans-serif;}
-.row {display: table-row; border : 1px solid #000000;  }
-.cell {display: table-cell; padding: 3px; border: 1px solid #000000; font: 25px arial, sans-serif; }
-.col1 {width: 20%; background:#48ae11; }
+.head{background : #DDD; display: table-row; border-bottom : 1px solid #000000; font: 25px arial, sans-serif;}
+.row {display: table-row; border-bottom : 1px solid #000000;  }
+.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #000000; font: 25px arial, sans-serif; }
+.col1 {width: 20%; background:#eaeaea; }
 .col2 {width: 80%;  }
 .co1{width: 20%;}
 .co2{width: 20%;}

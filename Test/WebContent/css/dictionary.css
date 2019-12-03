@@ -2,7 +2,7 @@
 
   body {
             background: #C2DABC;
- font: 15px arial, sans-serif;        }
+	font-family: 나눔고딕,NanumGothic,돋움,Dotum;      }
         
  
 .header{
@@ -11,7 +11,7 @@
 	padding-top:30px;
 	padding-bottom:5px;
 	text-align: center;
-	background: #65bf00;
+            background: #C2DABC;
 	margin-bottom: 30px; <!--middle과의간격을줌-->
 }  
 .container{
@@ -35,9 +35,9 @@
 }    
 
 #table {display: table; width: 100%; border: 1px solid #000000; text-align:center; }
-.head{ display: table-row; border : 1px solid #000000; font: 25px arial, sans-serif;}
-.row {display: table-row; border : 1px solid #000000; background: #c0c0c0}
-.cell {display: table-cell; padding: 3px; border: 1px solid #000000; font: 25px arial, sans-serif; }
+.head{ display: table-row; border-bottom: 1px solid #000000; font: 15px arial, sans-serif;}
+.row {display: table-row; border-bottom : 1px solid #000000; background : #DDD; }
+.cell {display: table-cell; vertical-align:middle; padding: 3px; border-bottom: 1px solid #000000; font: 15px arial, sans-serif; }
 .col1 {width: 10%; }
 .col2 {width: 9%;  }
 .col3 {width: 9%;}
@@ -65,7 +65,7 @@
 }
 .button:hover {opacity: 1}
 input[type=text] {
-  box-sizing: border-box;
+  box-sizing:content-box;
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 25px;

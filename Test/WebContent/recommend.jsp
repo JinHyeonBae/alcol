@@ -33,7 +33,7 @@
 
     <div class="frame">
    <div class="header">
-   <h1>추천</h1>
+   <h1>Recommend</h1>
    </div>
 
 

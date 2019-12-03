@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="./css/recipe_writing.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<title>입력하기</title>
+</head>
+
+<script>
+ function addUserRecipe(){
+    alert("좋은 의견 감사합니다!");
+    form.submit();    
+}
+</script>
+
+<div class="header">
+<h1>나만의 레시피 입력</h1>
+</div>
+
+<div class="content">
+<div id="table">
+			<div class="row">
+			<span class="cell col1">이름</span>	
+			<span class="cell col2"><input type="text" name="username" placeholder="이름을 입력하세요."> </span>	
+			</div>
+			<div class="row">
+			<span class="cell col1">조합</span>	
+			<span class="cell col2"><input type="text" name="userAlcol" placeholder="원하는 조합을 입력하세요."> </span>	
+			</div>
+			<div class="row">
+			<span class="cell col1">설명</span>	
+			<span class="cell col2"><textarea col="40" row="30" name="user_recipe" placeholder="조합에 대한 설명을 입력하세요."> </textarea></span>	
+			</div>
+
+	</div>
+    <form action="addRecipe.jsp">
+
+      </form>
+      </div>
+      
+      <div class="footer">
+        <form action="addRecipe.jsp">
+      <input type="submit" class="button" value="글쓰기 완료" onclick ="addUserRecipe()">
+      
+	   </form>
+      
+		</div>
+		   
+</html>

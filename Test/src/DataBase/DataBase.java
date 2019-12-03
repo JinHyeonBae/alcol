@@ -205,10 +205,8 @@ public class DataBase {
              sb.append("<span class=\"cell col7\">" + rs.getString("sweet") + "</span>");
              sb.append("<span class=\"cell col8\">" + rs.getString("tansan") + "</span>");
              sb.append("<span class=\"cell col9\">" + rs.getString("calories") + "</span>");
-             sb.append("<span class=\"cell col10\">\r\n" + 
-             		"\r\n" + 
-             		"<a onclick=\"return confirm('추천하시겠습니까?')\" href=\"./dictionary.jsp>\">추천</a>\r\n"  
-             		 +"</span>");
+             sb.append("<span class=\"cell col10\"><Image src=\"" + rs.getString("likeimage") + "\" width = \"50\" height=\"50\"></span>");
+
              sb.append("<span class=\"cell col1\">" + rs.getString("love") + "</span>");
           sb.append("</div>");
          }
@@ -487,14 +485,18 @@ public class DataBase {
          rs = stmt.executeQuery(query);
       
             while(rs.next()) {
-               str.append("<tr>");
-               str.append("<th>"+"<img src ="+rs.getString("Link")+">" +"</th>");
-               str.append("<td>"+ rs.getString("combineName")+"</td>");
-               str.append("<td>"+"설명  "+"<br>" +rs.getString("Decs") + "<br><br>" + "조합  "+ "<br>"+ rs.getString("combineAlcol")+"</td>");
-               str.append("<td>"+ "<input type=\"button\""+"onclick=\"addHeart()\""+"id="+rs.getRow()+"<br>"); //위치 파악을 위해
-               //str.append("<td>"+ "<img src="+ rs.getString("Love_img")+">"+"<br>"); -> 이미지 나옴
-               str.append("좋아요 " +rs.getString("Love")+" 회 </td>");
-               str.append("</tr>");
+            	
+                str.append("<div class=\"head\">");
+                str.append("<span class=\"cell col1\"><img src=\"" + rs.getString("Link") + "\" width = \"100\" height=\"100\"></span>");
+                str.append("<span class=\"cell col2\">" + rs.getString("combineName") + "</span>");
+                str.append("<span class=\"cell col3\">" + rs.getString("Decs") + "</span>");
+                str.append("<span class=\"cell col4\">" + rs.getString("combineAlcol")+"</span>");
+                str.append("<span class=\"cell col5\"><img src=\"" + rs.getString("love_img") + "\" width = \"50\" height=\"50\">"+"<br>");
+                str.append("좋아요 " +rs.getString("Love")+" 회 </span>");
+//                str.append("<span class=\"cell col5\">" + "<input type=\"button\""+"onclick=\"addHeart()\""+"id="+rs.getRow()+"<br>");
+              //  str.append("좋아요 " +rs.getString("Love")+" 회 </span>");
+             str.append("</div>");
+ 
          }
          conn.commit();
       }
@@ -588,13 +590,13 @@ public class DataBase {
       else return 1;      // 로그인 성공 했을 경우..
    }
    
-   public int InsertRecipe_user(String combName, String content, String id)
+   public int InsertRecipe_user(String combName, String content, String id, String name)
    {
       Connection conn = null;
       PreparedStatement pstmt =null;
       ResultSet rs = null;
       int result=0;
-      String query="INSERT INTO myrecipe VALUES(?,?,?,?)";
+      String query="INSERT INTO myrecipe VALUES(?,?,?,?,?)";
       
       try {
          conn = Connect();
@@ -604,6 +606,7 @@ public class DataBase {
          pstmt.setString(2,combName);
          pstmt.setInt(3,0); //좋아요 초기값 0 설정
          pstmt.setString(4,content);
+         pstmt.setString(5,name);
          
          result = pstmt.executeUpdate();
          conn.commit();
@@ -653,13 +656,16 @@ public class DataBase {
          rs = stmt.executeQuery(query);
       
             while(rs.next()) {
-               str.append("<tr>");
-               str.append("<th>"+rs.getString("ID") +"</th>");
-               str.append("<td>"+ rs.getString("combine")+"</td>");
-               str.append("<td>"+ rs.getString("UserDecs") + "<br><br>");
-               str.append("<td>"+ "<input type=\"button\"" + "onclick=\"addHeart(this)\""+">"+"id="+rs.getRow()+"<br>");
-               str.append("좋아요 " +rs.getString("Love")+" 회 </td>");
-               str.append("</tr>");
+            	
+                str.append("<div class=\"head\">");
+                str.append("<span class=\"cell co1\">" + rs.getString("ID") + "</span>");
+                str.append("<span class=\"cell co2\">" + rs.getString("NAME") + "</span>");
+                str.append("<span class=\"cell co3\">" +  rs.getString("combine")+ "</span>");
+                str.append("<span class=\"cell co4\">" +  rs.getString("UserDecs") + "</span>");
+                str.append("<span class=\"cell co5\">" +  rs.getString("love") + "</span>");
+
+                str.append("</div>");
+
          }
          conn.commit();
       }
@@ -772,10 +778,7 @@ public class DataBase {
                   sb.append("<span class=\"cell col7\">" + rs.getString("sweet") + "</span>");
                   sb.append("<span class=\"cell col8\">" + rs.getString("tansan") + "</span>");
                   sb.append("<span class=\"cell col9\">" + rs.getString("calories") + "</span>");
-                  sb.append("<span class=\"cell col10\">\r\n" + 
-                  		"\r\n" + 
-                  		"<a onclick=\"return confirm('추천하시겠습니까?')\" href=\"./dictionary.jsp>\">추천</a>\r\n"  
-                  		 +"</span>");
+                  sb.append("<span class=\"cell col10\"><Image src=\"" + rs.getString("likeimage") + "\" width = \"50\" height=\"50\"></span>");
                   sb.append("<span class=\"cell col1\">" + rs.getString("love") + "</span>");
                sb.append("</div>");
             }
