@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+  body {
+            background: #C2DABC;
+              text-align : center;
+     }
+        
+ .header{
+font-family:"주아체";
+     font-size:30px;
+     color:white;
+   padding:10px 10px;
+   text-align: center;
+   background: #C2DABC;
+}  
+        
+ .content{
+ margin-top : 40px;
+ padding: 15px 200px;
+    font: 15px arial, sans-serif;
+     text-align : center;
+   
+}
+
+.footer{
+    font: 15px arial, sans-serif;
+   text-align: center;
+   border-top: 1px solod #aaa;
+   font-size: 20px;
+   margin-top:20px;
+}   
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:8px;
+   opacity: 0.6; <!--누르면 바뀌어-->
+}
+.button:hover {opacity: 1}
+
+
+#table {display: table; width: 100%; border: 1px solid #000000; text-align:center; }
+.row {display: table-row; border-bottom : 1px solid #000000;  background:white;}
+.cell {display: table-cell; vertical-align:middle; padding: 3px; border-bottom: 1px solid #000000; font: 15px arial, sans-serif; }
+.col1{background:#DDD;  text-align:center;}
+.col2{ text-align:left;}

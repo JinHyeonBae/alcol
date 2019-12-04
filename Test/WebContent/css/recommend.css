@@ -19,6 +19,15 @@ font-family:"주아체";
    margin-bottom: 20px; <!--middle과의간격을줌-->
    
 }
+
+.asd{
+	background: url("../Image/like.png") no-repeat;
+	border: none;
+	width: 32px;
+	height: 32px;
+	background-size: 100%;
+	cursor: pointer;
+}
 .middle{
     font: 20px arial, sans-serif;
    text-align: center;

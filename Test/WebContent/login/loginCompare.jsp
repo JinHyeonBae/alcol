@@ -24,7 +24,7 @@
    <%} else if(result == -1){%>   
       <script>alert("정보를 기입해주세요"); history.go(-1);</script>
    <%} else { %>
-      <script> location.href="../login/login.html";</script>
+      <script> location.href="../index.jsp";</script>
    <%}%>
    
 </body>

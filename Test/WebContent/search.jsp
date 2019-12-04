@@ -32,6 +32,10 @@
     <input type="hidden" class="button" name="pageNum_drink" value="1">
     <input type="submit" class="button" value="검색">
 </form>
+
+<form action="index.jsp">
+   		<input type="submit" class="asd" value =""/>
+   </form>   
 </div>
 
 <%

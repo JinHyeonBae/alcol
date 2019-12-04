@@ -33,12 +33,13 @@
 <body>
 <%
 	DrinkContent dc = new DrinkContent();
-	DrinkPaging dp = dc.getRecipeContent("", "1", 5);
+	DrinkPaging dp = dc.getRecipeContent("myrecipe", "%", "1", 5);
 	
 	UserLogin userlogin = new UserLogin(request);
 	
-	userlogin.Logout();
+	//dc.WriteRecipe("myrecipe", "test", "test", "test", 0, "test");
 %>
+
 	<%= session.getAttribute("id") %>
 
 	<table>
@@ -48,7 +49,6 @@
             <td>조합</td>
             <td>버튼</td>
             <td>좋아요</td>
-            <td>종류</td>
         </tr>
         <%= dp.getSb() %>
     </table>

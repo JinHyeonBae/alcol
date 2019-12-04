@@ -12,6 +12,7 @@
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
        <link href="./css/recommend.css" rel="stylesheet" type="text/css">
     <title>추천 페이지</title>
+      
 </head>
 <%
    DrinkContent db = new DrinkContent();
@@ -26,7 +27,7 @@
    if(request.getParameter("alcohol") != null)
       alcohol = Integer.parseInt(request.getParameter("alcohol"));
    
-   StringBuffer sb = db.GetRecommend(sweet, tansan, alcohol);
+   StringBuffer sb = db.getRecommend(sweet, tansan, alcohol);
 
 
 %>
@@ -35,7 +36,12 @@
     <div class="frame">
    <div class="header">
    <h1>Recommend</h1>
+   <form action="index.jsp">
+   		<input type="submit" class="asd" value =""/>
+   </form> 
    </div>
+   
+   
 
 
 <form name="Recommendform" action="recommend.jsp">

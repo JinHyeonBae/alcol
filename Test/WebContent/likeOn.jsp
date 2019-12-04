@@ -27,12 +27,12 @@
 	if(!drink.LikeUpdate(tableName, contentName, (String)session.getAttribute("id"))) {%>
 	<script>
 		self.window.alert("이미 눌렸습니다!");
-		location.href = "test.jsp";
+		location.href = "<%= request.getParameter("site")%>.jsp?FindContentId=&FindkindId=%25&pageNum_drink=1";
 	</script>
 	<% } %>
 <script>
 	self.window.alert("좋아요!");
-	location.href = "test.jsp";
+	location.href = "<%= request.getParameter("site")%>.jsp?FindContentId=&FindkindId=%25&pageNum_drink=1";
 </script>
 </body>
 </html>
